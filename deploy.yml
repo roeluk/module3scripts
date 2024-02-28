@@ -1,0 +1,12 @@
+---
+- name: Deploy App1
+  hosts: 100.0.1.2:100.0.2.2
+  become: true
+  tasks:
+    - name: deploy web1web2
+      docker_container:
+        name: app1
+        image: repo/app1
+        state: started
+        restart_policy: always
+        published_ports: 80:80
